@@ -195,13 +195,13 @@ Diagnóstico ESG System
       <div className="logos-section">
         <div className="logo-container single-logo">
           <img 
-            src="/assets/logo-instituto-company.png" 
+            src="/FormEsg/assets/logo-instituto-company.png" 
             alt="Instituto Company - Inovação em Sustentabilidade" 
             className="logo"
             onError={(e) => {e.target.style.display = 'none'}}
           />
           <img 
-            src="/assets/logo-instituto-global.png" 
+            src="/FormEsg/assets/logo-instituto-global.png" 
             alt="Instituto Global - Real ESG Strategy" 
             className="logo"
             onError={(e) => {e.target.style.display = 'none'}}

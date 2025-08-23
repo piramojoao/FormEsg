@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/diagnostico-esg-instituto-company/static/css/main.d2f78980.css",
+    "main.js": "/diagnostico-esg-instituto-company/static/js/main.eef198ab.js",
+    "index.html": "/diagnostico-esg-instituto-company/index.html",
+    "main.d2f78980.css.map": "/diagnostico-esg-instituto-company/static/css/main.d2f78980.css.map",
+    "main.eef198ab.js.map": "/diagnostico-esg-instituto-company/static/js/main.eef198ab.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d2f78980.css",
+    "static/js/main.eef198ab.js"
+  ]
+}

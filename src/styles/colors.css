@@ -1,0 +1,99 @@
+/* 
+🎨 PALETA DE CORES - FORMIAGO
+Paleta Verde Personalizada (Ativa)
+Cores: #398226 | #679e26 | #3c7a2a
+*/
+
+:root {
+  /* Cores Principais - Verde Personalizado */
+  --primary-color: #398226;
+  --primary-dark: #3c7a2a; 
+  --primary-light: #679e26;
+  
+  /* Cores de Apoio */
+  --accent-color: #679e26;
+  --background-gradient: linear-gradient(135deg, #398226 0%, #679e26 50%, #3c7a2a 100%);
+  
+  /* Cores Neutras */
+  --white: #FFFFFF;
+  --gray-light: #F5F5F5;
+  --gray-medium: #E0E0E0;
+  --gray-dark: #757575;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  
+  /* Estados */
+  --hover-background: #e8f5e8;
+  --focus-shadow: rgba(57, 130, 38, 0.15);
+  --button-shadow: rgba(57, 130, 38, 0.4);
+  
+  /* Cores de Sucesso */
+  --success-color: #4CAF50;
+  --success-dark: #45a049;
+  
+  /* Cores de Erro */
+  --error-color: #f44336;
+  --error-background: #fee;
+  --error-border: #fcc;
+}
+
+/* 
+🎨 PALETAS ALTERNATIVAS 
+(Para trocar rapidamente, descomente uma e comente a ativa acima)
+*/
+
+/*
+=== VERDE PADRÃO ===
+:root {
+  --primary-color: #7CB342;
+  --primary-dark: #689F38;
+  --primary-light: #9CCC65;
+  --accent-color: #8BC34A;
+  --background-gradient: linear-gradient(135deg, #7CB342 0%, #689F38 100%);
+  --hover-background: #f1f8e9;
+  --focus-shadow: rgba(124, 179, 66, 0.1);
+  --button-shadow: rgba(124, 179, 66, 0.4);
+}
+*/
+
+/*
+=== AZUL PROFISSIONAL ===
+:root {
+  --primary-color: #2196F3;
+  --primary-dark: #1976D2;
+  --primary-light: #64B5F6;
+  --accent-color: #03A9F4;
+  --background-gradient: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+  --hover-background: #e3f2fd;
+  --focus-shadow: rgba(33, 150, 243, 0.1);
+  --button-shadow: rgba(33, 150, 243, 0.4);
+}
+*/
+
+/*
+=== ROXO MODERNO ===
+:root {
+  --primary-color: #9C27B0;
+  --primary-dark: #7B1FA2;
+  --primary-light: #BA68C8;
+  --accent-color: #E91E63;
+  --background-gradient: linear-gradient(135deg, #9C27B0 0%, #7B1FA2 100%);
+  --hover-background: #f3e5f5;
+  --focus-shadow: rgba(156, 39, 176, 0.1);
+  --button-shadow: rgba(156, 39, 176, 0.4);
+}
+*/
+
+/*
+=== LARANJA ENERGÉTICO ===
+:root {
+  --primary-color: #FF9800;
+  --primary-dark: #F57C00;
+  --primary-light: #FFB74D;
+  --accent-color: #FF5722;
+  --background-gradient: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+  --hover-background: #fff3e0;
+  --focus-shadow: rgba(255, 152, 0, 0.1);
+  --button-shadow: rgba(255, 152, 0, 0.4);
+}
+*/

@@ -62,7 +62,28 @@
 .header h1 {
   color: #333;
   font-size: 2em;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.etapa-image {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.dimensao-image {
+  max-width: 300px;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dimensao-image:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
 }
 
 .header p {
@@ -75,7 +96,8 @@
   margin-bottom: 25px;
 }
 
-.form-group label {
+.form-group label,
+.form-group .question-label {
   display: block;
   color: #333;
   font-weight: 500;
@@ -117,29 +139,66 @@
 .radio-option {
   display: flex;
   align-items: center;
-  padding: 12px 20px;
+  padding: 15px 25px;
   border: 2px solid #e1e8ed;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
-  min-width: 80px;
+  min-width: 100px;
   justify-content: center;
   font-weight: 500;
+  position: relative;
+  user-select: none;
 }
 
 .radio-option:hover {
   border-color: #398226;
   background-color: #e8f5e8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(57, 130, 38, 0.2);
 }
 
 .radio-option input[type="radio"] {
-  margin-right: 10px;
-  width: auto;
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.radio-option label {
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .radio-option.selected {
   border-color: #398226;
   background-color: #e8f5e8;
+  color: #398226;
+  font-weight: 600;
+}
+
+.radio-option.selected label {
+  color: #398226;
+}
+
+/* Adicionar indicador visual quando selecionado */
+.radio-option.selected::before {
+  content: '✓';
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #398226;
+  font-weight: bold;
+  font-size: 1.1em;
 }
 
 .submit-button {
@@ -260,15 +319,317 @@
     font-size: 0.95em;
   }
   
+  .dimensao-image {
+    max-width: 250px;
+    height: 160px;
+  }
+  
   .radio-group {
     gap: 15px;
     justify-content: center;
   }
   
   .radio-option {
-    padding: 10px 15px;
+    padding: 12px 20px;
     font-size: 0.95em;
-    min-width: 70px;
+    min-width: 90px;
+  }
+  
+  .radio-option.selected::before {
+    font-size: 1em;
+    left: 6px;
+  }
+}
+
+/* Estilos para o formulário multi-etapas */
+.progress-bar {
+  margin-bottom: 30px;
+  padding: 20px 0;
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.progress-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: #e1e8ed;
+  z-index: 1;
+}
+
+.progress-step.active:not(:last-child)::after {
+  background: #398226;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e1e8ed;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+}
+
+.progress-step.active .step-number {
+  background: #398226;
+  color: white;
+}
+
+.progress-step.current .step-number {
+  background: #398226;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 0 0 3px rgba(57, 130, 38, 0.2);
+}
+
+.step-name {
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #666;
+  text-align: center;
+}
+
+.progress-step.active .step-name {
+  color: #398226;
+}
+
+/* Navegação entre etapas */
+.navigation-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  justify-content: space-between;
+}
+
+.nav-button {
+  flex: 1;
+  padding: 12px 24px;
+  border: 2px solid #398226;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.prev-button {
+  background: white;
+  color: #398226;
+}
+
+.prev-button:hover {
+  background: #e8f5e8;
+}
+
+.next-button {
+  background: #398226;
+  color: white;
+}
+
+.next-button:hover {
+  background: #316e1f;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(57, 130, 38, 0.3);
+}
+
+/* Página de resultado */
+.resultado-container {
+  text-align: center;
+}
+
+.resultado-card {
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 25px;
+  border: 3px solid;
+}
+
+.resultado-card.success {
+  border-color: #4CAF50;
+  background: linear-gradient(135deg, #e8f5e8 0%, #f1f8f1 100%);
+}
+
+.resultado-card.warning {
+  border-color: #ff9800;
+  background: linear-gradient(135deg, #fff3e0 0%, #fff8f1 100%);
+}
+
+.resultado-card.danger {
+  border-color: #f44336;
+  background: linear-gradient(135deg, #ffebee 0%, #fff1f1 100%);
+}
+
+.resultado-card h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.resultado-card.success h2 {
+  color: #2e7d32;
+}
+
+.resultado-card.warning h2 {
+  color: #f57c00;
+}
+
+.resultado-card.danger h2 {
+  color: #c62828;
+}
+
+.pontuacao-total h3 {
+  font-size: 1.4em;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.pontuacao-dimensoes {
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.dimensao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 120px;
+}
+
+.dimensao span:first-child {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.dimensao span:nth-child(2) {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: #398226;
+}
+
+.dimensao .nivel {
+  font-size: 0.9em;
+  font-weight: 600;
+  color: #555;
+  margin-top: 5px;
+}
+
+.recomendacoes,
+.mensagem {
+  text-align: left;
+  margin-top: 25px;
+}
+
+.recomendacoes h3,
+.mensagem h3 {
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  color: #333;
+  text-align: center;
+}
+
+.mensagem p {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  line-height: 1.6;
+  font-size: 1.05em;
+  color: #444;
+  text-align: justify;
+  border-left: 4px solid #398226;
+}
+
+.recomendacoes ul {
+  list-style: none;
+  padding: 0;
+}
+
+.recomendacoes li {
+  background: white;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  padding-left: 35px;
+}
+
+.recomendacoes li::before {
+  content: '✓';
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  color: #398226;
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+@media (max-width: 768px) {
+  .progress-steps {
+    max-width: 100%;
+  }
+  
+  .step-number {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9em;
+  }
+  
+  .step-name {
+    font-size: 0.8em;
+  }
+  
+  .navigation-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .pontuacao-dimensoes {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .dimensao {
+    min-width: auto;
+  }
+  
+  .resultado-card {
+    padding: 20px;
   }
 }
 
@@ -285,5 +646,25 @@
   
   .header h1 {
     font-size: 1.3em;
+  }
+  
+  .dimensao-image {
+    max-width: 200px;
+    height: 140px;
+  }
+  
+  .progress-step {
+    flex: none;
+    min-width: 60px;
+  }
+  
+  .step-number {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8em;
+  }
+  
+  .step-name {
+    font-size: 0.7em;
   }
 }
